@@ -7,7 +7,7 @@
       <main>
         <hr />
         <div>
-          <img class="book-cover rounded" :src="book.cover" />
+          <img v-bind:alt="book.title | coverAlt" class="book-cover rounded" :src="book.cover" />
         </div>
         <Synopsis :synopsis="book.synopsis" />
       </main>
@@ -45,6 +45,9 @@ export default {
       .then(response => (this.book = response.data))
       .catch(() => (this.error = true))
       .finally(() => (this.loading = false));
+  },
+  filters: {
+    coverAlt: title => `${title} Cover`
   }
 };
 </script>

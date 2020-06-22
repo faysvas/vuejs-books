@@ -1,32 +1,32 @@
 <template>
-  <div id="app">
-    <b-container>
-      <b-row align-h="center">
-        <b-col cols="10">
-          <router-view></router-view>
-        </b-col>
-      </b-row>
-    </b-container>
-  </div>
+    <div id="app">
+        <b-container>
+            <b-row align-h="center">
+                <b-col cols="12" md="10">
+                    <router-view></router-view>
+                </b-col>
+            </b-row>
+        </b-container>
+    </div>
 </template>
 
 <script>
-// TODO: Display something if data is not
+// TODO: Display something if data is not available
 
-import Vue from "vue";
-import VueRouter from "vue-router";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 export default {
-  name: "app"
+    name: 'app',
 };
 </script>
 
 <style lang="scss">
-@import "./styles/_variables.scss";
+@import './styles/_variables.scss';
 
 #app {
-  background-color: $bg-color;
-  font-family: $regular-font;
+    background-color: $bg-color;
+    font-family: $regular-font;
 }
 </style>

@@ -12,18 +12,18 @@ Vue.config.productionTip = false;
 
 const routes = [
     { path: '/book/:book_slug', name: 'book', component: BookDetails },
-    { path: '/', component: BookList }
+    { path: '/', component: BookList },
+    { path: '*', redirect: '/' },
 ];
 Vue.use(BootstrapVue);
 Vue.use(VueRouter);
-// 3. Create the router instance and pass the `routes` option
-// You can pass in additional options here, but let's
-// keep it simple for now.
+
 const router = new VueRouter({
-    routes // short for `routes: routes`
+    routes,
+    mode: 'history',
 });
 
 new Vue({
     router,
-    render: h => h(App)
+    render: (h) => h(App),
 }).$mount('#app');
