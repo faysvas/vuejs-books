@@ -12,8 +12,8 @@ describe('vuejs-books main page', () => {
     });
 
     it('checks that synopsis are less or equal to 200 characters', () => {
-        cy.get('.card-text').each($el => {
-            expect($el.text()).to.have.length.of.at.most(200);
+        cy.get('.card-text').each(($el) => {
+            expect($el.text().trim()).to.have.length.of.at.most(200);
         });
     });
 
@@ -90,5 +90,13 @@ describe('vuejs-books error page for wrong book', () => {
     it('shows error for non existing page', () => {
         cy.visit('/book/no-book');
         cy.contains('.error', 'Book not found!');
+    });
+});
+
+// Invalid Route Check
+describe('vuejs-books redirects to home if route invalid', () => {
+    it('redirects to home if route invalid', () => {
+        cy.visit('/invalid-route/');
+        cy.contains('h1', 'Top Books of All Time');
     });
 });
