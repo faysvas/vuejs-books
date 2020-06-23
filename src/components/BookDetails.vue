@@ -41,8 +41,10 @@ export default {
   mounted() {
     this.loading = true;
     axios
-      .get("http://localhost:3000/books/" + this.$route.params.book_slug)
-      .then(response => (this.book = response.data))
+      .get(
+        `${this.$apiURI}?orderBy="slug"&equalTo="${this.$route.params.book_slug}"`
+      )
+      .then(response => (this.book = response.data[0]))
       .catch(() => (this.error = true))
       .finally(() => (this.loading = false));
   },

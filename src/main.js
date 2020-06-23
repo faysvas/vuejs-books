@@ -9,7 +9,7 @@ import BookList from './components/BookList.vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 Vue.config.productionTip = false;
-
+Vue.prototype.$apiURI = 'https://vuejs-books-ec25a.firebaseio.com/books.json';
 const routes = [
     { path: '/book/:book_slug', name: 'book', component: BookDetails },
     { path: '/', component: BookList },
