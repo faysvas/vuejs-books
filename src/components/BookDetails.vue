@@ -1,7 +1,7 @@
 <template>
   <div class="book-details text-center">
     <div v-if="loading" class="loading">Loading...</div>
-    <div v-if="error" class="error">Book not found!</div>
+    <div v-if="error" class="error">Book Not Found!</div>
     <div v-if="book">
       <Header :book="book" />
       <main>
@@ -36,7 +36,9 @@ export default {
   },
   watch: {
     // call again the method if the route changes
-    $route: "fetchData"
+    $route: () => {
+      location.reload();
+    }
   },
   mounted() {
     this.loading = true;
@@ -44,8 +46,14 @@ export default {
       .get(
         `${this.$apiURI}?orderBy="slug"&equalTo="${this.$route.params.book_slug}"`
       )
-      .then(response => (this.book = response.data[0]))
-      .catch(() => (this.error = true))
+      .then(response => {
+        for (const book in response.data) {
+          this.book = response.data[book];
+        }
+        this.error = !this.book;
+        //this.book = response.data && response.data[0]
+      })
+      .catch(() => (this.error = error))
       .finally(() => (this.loading = false));
   },
   filters: {

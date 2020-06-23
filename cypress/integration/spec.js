@@ -89,7 +89,7 @@ describe('vuejs-books details page', () => {
 describe('vuejs-books error page for wrong book', () => {
     it('shows error for non existing page', () => {
         cy.visit('/book/no-book');
-        cy.contains('.error', 'Book not found!');
+        cy.contains('.error', 'Book Not Found!');
     });
 });
 
