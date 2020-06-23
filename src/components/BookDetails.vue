@@ -53,7 +53,7 @@ export default {
         this.error = !this.book;
         //this.book = response.data && response.data[0]
       })
-      .catch(() => (this.error = error))
+      .catch(error => (this.error = error))
       .finally(() => (this.loading = false));
   },
   filters: {

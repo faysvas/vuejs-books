@@ -15,7 +15,7 @@ addons:
 
 script:
     - npm run lint
-    - npm run start
+    - npm run start &
     - npm run cypress:ci
     - npm run build
 
