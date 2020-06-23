@@ -10,7 +10,7 @@
               thumbnail
               rounded
               :src="book.cover"
-              class="book-cover"
+              class="d-none d-md-block book-cover"
             ></b-card-img>
           </router-link>
         </b-col>
@@ -18,10 +18,7 @@
           <b-card-body>
             <h2>
               <router-link
-                :to="{
-                                    name: 'book',
-                                    params: { book_slug: book.slug },
-                                }"
+                :to="{ name: 'book', params: { book_slug: book.slug }}"
               >{{ index + 1 }}. {{ book.title }}</router-link>
             </h2>
             <div>
